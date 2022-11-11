@@ -97,7 +97,7 @@ class Parser(object):
         self._end_non_terminal()
         
     def _compile_dec(self):
-        self.compile_type();
+        self.compile_type()
         self.compile_var_name()
         while self._is_token(T_SYM, ','):
             self._require(T_SYM, ',')
@@ -106,7 +106,7 @@ class Parser(object):
     
     def _is_type(self):
         tok, val = self.lex.peek()
-        return tok == T_KEYWORD and (val == KW_INT or val == KW_CHAR or val == KW_BOOLEAN or val == KW_LONG or val == KW_STRING) or tok == T_ID
+        return tok == T_KEYWORD and (val == KW_INT or val == KW_CHAR or val == KW_BOOLEAN or val == KW_LONG or val == KW_STRING or val == KW_LIST) or tok == T_ID
 
     def compile_type(self):
         if self._is_type():
@@ -181,7 +181,7 @@ class Parser(object):
         self._end_non_terminal()
     
     def _is_statement(self):
-        return self._is_do() or self._is_let() or self._is_if() or self._is_while() or self._is_return() or self._is_for()
+        return self._is_foreach() or self._is_continue() or self._is_break() or self._is_switch() or self._is_do() or self._is_let() or self._is_if() or self._is_while() or self._is_return() or self._is_for()
         
     def _compile_statement(self):
         if   self._is_do():     
@@ -196,7 +196,40 @@ class Parser(object):
             self.compile_return()
         elif self._is_for():
             self.compile_for()
-        
+        elif self._is_foreach():
+            self.compile_foreach()
+        elif self._is_switch():
+            self.compile_switch()
+        elif self._is_continue():
+            self.compile_continue()
+        elif self._is_break():
+            self.compile_break()
+
+    def _is_switch(self):
+        return self._is_token(T_KEYWORD, KW_SWITCH)
+
+    def compile_switch(self):
+        self._start_non_terminal('switchStatement')
+        self._require(T_KEYWORD, KW_SWITCH)
+        self._require(T_SYM, '(')
+        self.compile_expression()
+        self._require(T_SYM, ')')
+        self._require(T_SYM, '{')
+
+        while self._is_token(T_KEYWORD, KW_CASE):
+            self._require(T_KEYWORD, KW_CASE)
+            self.compile_expression()
+            self._require(T_SYM, ':')
+            self.compile_statements()
+            
+        if self._is_token(T_KEYWORD, KW_DEFAULT):
+            self._require(T_KEYWORD, KW_DEFAULT)
+            self._require(T_SYM, ':')
+            self.compile_statements()
+
+        self._require(T_SYM, '}')
+        self._end_non_terminal()
+
     def _is_do(self):
         return self._is_token(T_KEYWORD, KW_DO)
         
@@ -222,13 +255,34 @@ class Parser(object):
         
         if self._is_token(T_SYM, '+'):
             self._advance()
-            self._require(T_SYM, '+')
+            if self._is_token(T_SYM, '+'):
+                self._advance()
+            else:
+                self._require(T_SYM, '=')
+                self.compile_expression()
+
         elif self._is_token(T_SYM, '-'):
             self._advance()
-            self._require(T_SYM, '-')
-        else:
+            if self._is_token(T_SYM, '-'):
+                self._advance()
+            else:
+                self._require(T_SYM, '=')
+                self.compile_expression()
+
+        elif self._is_token(T_SYM, '*') or self._is_token(T_SYM, '/'):
+            self._advance()
             self._require(T_SYM, '=')
             self.compile_expression()
+        else:
+            self._require(T_SYM, '=')
+            
+            if self._is_token(T_SYM, '['):
+                self._require(T_SYM, '[')
+                self.compile_expression_list()
+                self._require(T_SYM, ']')
+            else:
+                self.compile_expression()
+
         self._require(T_SYM, ';')
         self._end_non_terminal()
         
@@ -240,7 +294,25 @@ class Parser(object):
         self._require(T_KEYWORD, KW_WHILE)
         self._compile_cond_expression_statements()
         self._end_non_terminal()
+
+    def _is_continue(self):
+        return self._is_token(T_KEYWORD, KW_CONTINUE)
         
+    def compile_continue(self):
+        self._start_non_terminal('continueStatement')
+        self._require(T_KEYWORD, KW_CONTINUE)
+        self._require(T_SYM, ';')
+        self._end_non_terminal()
+        
+    def _is_break(self):
+        return self._is_token(T_KEYWORD, KW_BREAK)
+        
+    def compile_break(self):
+        self._start_non_terminal('breakStatement')
+        self._require(T_KEYWORD, KW_BREAK)
+        self._require(T_SYM, ';')
+        self._end_non_terminal()
+
     def _is_return(self):
         return self._is_token(T_KEYWORD, KW_RETURN)
         
@@ -259,9 +331,16 @@ class Parser(object):
         self._start_non_terminal('ifStatement')
         self._require(T_KEYWORD, KW_IF)
         self._compile_cond_expression_statements()
+
+        while self._is_token(T_KEYWORD, KW_ELIF):
+            self._require(T_KEYWORD, KW_ELIF)
+            self._compile_cond_expression_statements()
+
         if self._is_token(T_KEYWORD, KW_ELSE):
-            self._advance()
+            self._require(T_KEYWORD, KW_ELSE)
+            self._require(T_SYM, '{')
             self.compile_statements()
+            self._require(T_SYM, '}')
         self._end_non_terminal()
         
     def _is_for(self):
@@ -272,6 +351,22 @@ class Parser(object):
         self._require(T_KEYWORD, KW_FOR)
         self._require(T_SYM, '(')
         self._require(T_SYM, ')')
+        self._end_non_terminal()
+
+    def _is_foreach(self):
+        return self._is_token(T_KEYWORD, KW_FOREACH)
+    
+    def compile_foreach(self):
+        self._start_non_terminal('foreachStatement')
+        self._require(T_KEYWORD, KW_FOREACH)
+        self._require(T_SYM, '(')
+        self.compile_var_name()
+        self._require(T_SYM, ':')
+        self.compile_var_name()
+        self._require(T_SYM, ')')
+        self._require(T_SYM, '{')
+        self.compile_statements()
+        self._require(T_SYM, '}')
         self._end_non_terminal()
 
     def _compile_cond_expression_statements(self):
@@ -285,7 +380,10 @@ class Parser(object):
     # Expresiones
     def compile_expression(self):
         if not self._is_term():
+            if self._is_token(T_SYM, ','):
+                raise ParserError(self._require_failed_msg(*self.lex.peek()))
             return
+            
         self._start_non_terminal('expression')
         self.compile_term()
         while self._is_op():
@@ -343,7 +441,9 @@ class Parser(object):
     def compile_expression_list(self):
         self._start_non_terminal('expressionList')
         self.compile_expression()
+
         while self._is_token(T_SYM, ','):
-            self._advance()
+            self._require(T_SYM, ',')
             self.compile_expression()
+        
         self._end_non_terminal()

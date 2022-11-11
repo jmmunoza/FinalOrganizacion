@@ -5,17 +5,34 @@ class Main {
         var int length;
 	var int i, sum;
 	var string estrin;
+	var list a_list;
 
 	let length = Keyboard.readInt("Cuantos numeros desea ingresar? ");
 	let a = Array.new(length);
 	let i = 0;
+
+	if(e > 3) {
+		let length = Keyboard.readInt("Cuantos numeros desea ingresar? ");
+		let a = Array.new(length);
+		let i = 0;
+	} elif (g > 3) {
+		let length = Keyboard.readInt("Cuantos numeros desea ingresar? ");
+	} elif (5 > 3) {
+		let length = Keyboard.readInt("Cuantos numeros desea ingresar? ");
+		let i = 234;
+	} elif (R > 3) {
+		let length = Keyboard.readInt("Cuantos numeros desea ingresar? ");
+		let a = Array.new(length);
+		let i = 234;
+	} else {
+		let i = 2;
+	}
 	
 	while (i < length) {
 	    let a[i] = Keyboard.readInt("Ingrese el siguiente numero: ");
 	    let i = i + 1;
 	}
 	
-	let i = 0;
 	let sum = 0;
 	
 	while (i < length) {
@@ -23,14 +40,58 @@ class Main {
 	    let i = i + 1;
 	}
 
-	for()
+	foreach(AD : D) {
+		let i++;
+		while (i < length) {
+			let sum = sum + a[i];
+			let i = i + 1;
+		}	
+	}
+
 	let i++;
-	let i++;
-	
+	let i--;
+	let i *= 3;
+	let i += 3;
+	let i /= 3 + D;
+	let i -= 3;
+	let i = 3 - ASD;
+
+	switch(e){
+		case A:
+			let i -= 3;
+			let i -= 3;
+		case B:
+			let i = 3;
+		case C:
+			let i /= 3;
+		case D:
+			let i += 3;
+			switch(e){
+				case A:
+					let i -= 3;
+					let i -= 3;
+					break;
+				case B:
+					let i = 3;
+					break;
+				case C:
+					let i /= 3;
+					break;
+				case D:
+					let i += 3;
+					break;
+				default:
+					let x++;
+			}
+	}
+	continue;
 	do Output.printString("EL PROMEDIO ES: ");
 	do Output.printInt(sum / length);
 	do Output.println();
 	
+	
+	let a_list = [1,2,4,5,6,7,2,q];
+
 	return;
     }
 }

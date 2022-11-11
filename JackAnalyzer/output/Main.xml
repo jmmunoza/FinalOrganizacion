@@ -38,6 +38,12 @@
 <identifier> estrin </identifier>
 <symbol> ; </symbol>
 </varDec>
+<varDec>
+<keyword> var </keyword>
+<keyword> list </keyword>
+<identifier> a_list </identifier>
+<symbol> ; </symbol>
+</varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
@@ -94,6 +100,253 @@
 </expression>
 <symbol> ; </symbol>
 </letStatement>
+<ifStatement>
+<keyword> if </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> e </identifier>
+</term>
+<symbol> &gt; </symbol>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> length </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Keyboard </identifier>
+<symbol> . </symbol>
+<identifier> readInt </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<stringConstant> Cuantos numeros desea ingresar? </stringConstant>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> a </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Array </identifier>
+<symbol> . </symbol>
+<identifier> new </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<identifier> length </identifier>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 0 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<symbol> } </symbol>
+<keyword> elif </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> g </identifier>
+</term>
+<symbol> &gt; </symbol>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> length </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Keyboard </identifier>
+<symbol> . </symbol>
+<identifier> readInt </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<stringConstant> Cuantos numeros desea ingresar? </stringConstant>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<symbol> } </symbol>
+<keyword> elif </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<integerConstant> 5 </integerConstant>
+</term>
+<symbol> &gt; </symbol>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> length </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Keyboard </identifier>
+<symbol> . </symbol>
+<identifier> readInt </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<stringConstant> Cuantos numeros desea ingresar? </stringConstant>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 234 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<symbol> } </symbol>
+<keyword> elif </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> R </identifier>
+</term>
+<symbol> &gt; </symbol>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> length </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Keyboard </identifier>
+<symbol> . </symbol>
+<identifier> readInt </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<stringConstant> Cuantos numeros desea ingresar? </stringConstant>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> a </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Array </identifier>
+<symbol> . </symbol>
+<identifier> new </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<identifier> length </identifier>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 234 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<symbol> } </symbol>
+<keyword> else </keyword>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 2 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<symbol> } </symbol>
+</ifStatement>
 <whileStatement>
 <keyword> while </keyword>
 <symbol> ( </symbol>
@@ -158,17 +411,6 @@
 </whileStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> i </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
 <identifier> sum </identifier>
 <symbol> = </symbol>
 <expression>
@@ -233,11 +475,80 @@
 </statements>
 <symbol> } </symbol>
 </whileStatement>
-<forStatement>
-<keyword> for </keyword>
+<foreachStatement>
+<keyword> foreach </keyword>
 <symbol> ( </symbol>
+<identifier> AD </identifier>
+<symbol> : </symbol>
+<identifier> D </identifier>
 <symbol> ) </symbol>
-</forStatement>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> + </symbol>
+<symbol> + </symbol>
+<symbol> ; </symbol>
+</letStatement>
+<whileStatement>
+<keyword> while </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> i </identifier>
+</term>
+<symbol> &lt; </symbol>
+<term>
+<identifier> length </identifier>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> sum </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> sum </identifier>
+</term>
+<symbol> + </symbol>
+<term>
+<identifier> a </identifier>
+<symbol> [ </symbol>
+<expression>
+<term>
+<identifier> i </identifier>
+</term>
+</expression>
+<symbol> ] </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> i </identifier>
+</term>
+<symbol> + </symbol>
+<term>
+<integerConstant> 1 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<symbol> } </symbol>
+</whileStatement>
+</statements>
+<symbol> } </symbol>
+</foreachStatement>
 <letStatement>
 <keyword> let </keyword>
 <identifier> i </identifier>
@@ -248,10 +559,322 @@
 <letStatement>
 <keyword> let </keyword>
 <identifier> i </identifier>
+<symbol> - </symbol>
+<symbol> - </symbol>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> * </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> + </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> / </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+<symbol> + </symbol>
+<term>
+<identifier> D </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> - </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+<symbol> - </symbol>
+<term>
+<identifier> ASD </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<switchStatement>
+<keyword> switch </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> e </identifier>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> A </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> - </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> - </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> B </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> C </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> / </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+</statements>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> D </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> + </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<switchStatement>
+<keyword> switch </keyword>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> e </identifier>
+</term>
+</expression>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> A </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> - </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> - </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<breakStatement>
+<keyword> break </keyword>
+<symbol> ; </symbol>
+</breakStatement>
+</statements>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> B </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<breakStatement>
+<keyword> break </keyword>
+<symbol> ; </symbol>
+</breakStatement>
+</statements>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> C </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> / </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<breakStatement>
+<keyword> break </keyword>
+<symbol> ; </symbol>
+</breakStatement>
+</statements>
+<keyword> case </keyword>
+<expression>
+<term>
+<identifier> D </identifier>
+</term>
+</expression>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> i </identifier>
+<symbol> + </symbol>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 3 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<breakStatement>
+<keyword> break </keyword>
+<symbol> ; </symbol>
+</breakStatement>
+</statements>
+<keyword> default </keyword>
+<symbol> : </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> x </identifier>
 <symbol> + </symbol>
 <symbol> + </symbol>
 <symbol> ; </symbol>
 </letStatement>
+</statements>
+<symbol> } </symbol>
+</switchStatement>
+</statements>
+<symbol> } </symbol>
+</switchStatement>
+<continueStatement>
+<keyword> continue </keyword>
+<symbol> ; </symbol>
+</continueStatement>
 <doStatement>
 <keyword> do </keyword>
 <identifier> Output </identifier>
@@ -299,6 +922,63 @@
 <symbol> ) </symbol>
 <symbol> ; </symbol>
 </doStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> a_list </identifier>
+<symbol> = </symbol>
+<symbol> [ </symbol>
+<expressionList>
+<expression>
+<term>
+<integerConstant> 1 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<integerConstant> 2 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<integerConstant> 4 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<integerConstant> 5 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<integerConstant> 6 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<integerConstant> 7 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<integerConstant> 2 </integerConstant>
+</term>
+</expression>
+<symbol> , </symbol>
+<expression>
+<term>
+<identifier> q </identifier>
+</term>
+</expression>
+</expressionList>
+<symbol> ] </symbol>
+<symbol> ; </symbol>
+</letStatement>
 <returnStatement>
 <keyword> return </keyword>
 <symbol> ; </symbol>
