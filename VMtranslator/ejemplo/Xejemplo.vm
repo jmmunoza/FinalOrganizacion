@@ -1,0 +1,18 @@
+push constant 5
+push constant 8
+lt
+push constant 8
+push constant 5
+lt
+push constant 8
+push constant 8
+lt
+push constant 1
+push constant 0
+and
+push constant 1
+push constant 1
+and
+push constant 0
+push constant 0
+and

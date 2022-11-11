@@ -1,0 +1,36 @@
+
+class Main {
+    function void main() {
+        var Array a;
+        var int length;
+	var int i, sum;
+	var string estrin;
+
+	let length = Keyboard.readInt("Cuantos numeros desea ingresar? ");
+	let a = Array.new(length);
+	let i = 0;
+	
+	while (i < length) {
+	    let a[i] = Keyboard.readInt("Ingrese el siguiente numero: ");
+	    let i = i + 1;
+	}
+	
+	let i = 0;
+	let sum = 0;
+	
+	while (i < length) {
+	    let sum = sum + a[i];
+	    let i = i + 1;
+	}
+
+	for()
+	let i++;
+	let i++;
+	
+	do Output.printString("EL PROMEDIO ES: ");
+	do Output.printInt(sum / length);
+	do Output.println();
+	
+	return;
+    }
+}
